@@ -1,16 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux'
+import { removeTodo } from '../actions'
 
-const Todo = ({ onClick, completed, text }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-  >
-    {text}
-  </li>
-)
+const Todo = ({ removeTodo, onClick, completed, text, id }) => {
+  const handleRemove = (ev) => {    
+    ev.stopPropagation()
+    removeTodo(id)
+  }
+  return (
+    <li
+      onClick={onClick}
+      style={{
+        textDecoration: completed ? 'line-through' : 'none'
+      }}
+      className={completed ? 'completed' : ''}
+    >
+      <p>{text}</p>
+      <FontAwesomeIcon icon={!completed ? faTrashAlt : faCheckCircle} onClick={(ev) => {
+        if(!completed) handleRemove(ev) }}/>
+    </li>
+  )
+}
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -18,4 +31,8 @@ Todo.propTypes = {
   text: PropTypes.string.isRequired
 }
 
-export default Todo
+const mapDispatchToProps = (dispatch) => ({
+  removeTodo: (id) => dispatch(removeTodo(id))
+})
+
+export default connect(null, mapDispatchToProps)(Todo)

@@ -1,0 +1,22 @@
+button {
+    text-align: center;
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.5s;
+
+    &:hover:enabled {
+        background-color: #bbbbbb;
+    }
+
+    &.add-button {
+        color: white;
+        background-color: #196ed5;
+
+        &:hover {
+            background-color: #003f8c;
+        }
+    };
+}

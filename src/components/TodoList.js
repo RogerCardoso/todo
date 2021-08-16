@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
+import '../styles/todoListStyles.scss'
 
-const TodoList = ({ todos, toggleTodo }) => (
+const TodoList = ({ todos, toggleTodo }) => {
+  
+  return (  
   <ul>
     {todos.map(todo =>
       <Todo
@@ -12,7 +15,7 @@ const TodoList = ({ todos, toggleTodo }) => (
       />
     )}
   </ul>
-)
+)}
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
