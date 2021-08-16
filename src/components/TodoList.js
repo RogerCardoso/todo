@@ -4,9 +4,8 @@ import Todo from './Todo'
 import '../styles/todoListStyles.scss'
 
 const TodoList = ({ todos, toggleTodo }) => {
-  
   return (  
-  <ul>
+  <ul data-testid='todo-list'>
     {todos.map(todo =>
       <Todo
         key={todo.id}

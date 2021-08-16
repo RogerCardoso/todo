@@ -5,7 +5,7 @@ import { faTrashAlt, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { connect } from 'react-redux'
 import { removeTodo } from '../actions'
 
-const Todo = ({ removeTodo, onClick, completed, text, id }) => {
+export const Todo = ({ removeTodo, onClick, completed, text, id }) => {
   const handleRemove = (ev) => {    
     ev.stopPropagation()
     removeTodo(id)
